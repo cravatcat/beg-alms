@@ -7,6 +7,9 @@ import {
   ControlPanel
 } from '../components/Animator';
 
+import mergeMarkdown from '../lc/merge.md?raw';
+import mergeCode from '../lc/merge.js?raw';
+
 function LC88() {
   const elementRefs = useRef({});
 
@@ -201,10 +204,11 @@ function LC88() {
     </div>
   );
 
+  // 在组件的 return 语句中
   return (
     <LCLayout
-      problemFile="merge.md"
-      codeFile="merge.js"
+      problemContent={mergeMarkdown}
+      codeContent={`\`\`\`javascript\n${mergeCode}\n\`\`\``}
       animationComponent={<AnimationComponent />}
       title="动态合并两个有序数组"
     />

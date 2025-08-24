@@ -7,6 +7,9 @@ import {
   ControlPanel
 } from '../components/Animator';
 
+import removeDuplicatesMarkdown from '../lc/removeDuplicates.md?raw';
+import removeDuplicatesCode from '../lc/removeDuplicates.js?raw';
+
 function LC26() {
   const elementRefs = useRef({});
 
@@ -145,8 +148,8 @@ function LC26() {
 
   return (
     <LCLayout
-      problemFile="removeDuplicates.md"
-      codeFile="removeDuplicates.js"
+      problemContent={removeDuplicatesMarkdown}
+      codeContent={`\`\`\`javascript\n${removeDuplicatesCode}\n\`\`\``}
       animationComponent={<AnimationComponent />}
       title="动态删除有序数组中的重复项"
     />

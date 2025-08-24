@@ -3,47 +3,11 @@ import { Card } from 'antd';
 import MarkdownRenderer from './MarkdownRenderer';
 
 function LCLayout({
-  problemFile,
-  codeFile,
+  problemContent,  // 直接传入内容而不是文件名
+  codeContent,     // 直接传入内容而不是文件名
   animationComponent,
   title = ""
 }) {
-  const [problemContent, setProblemContent] = useState('');
-  const [codeContent, setCodeContent] = useState('');
-
-  useEffect(() => {
-    const loadProblemContent = async () => {
-      try {
-        const response = await fetch(`/src/lc/${problemFile}`);
-        const text = await response.text();
-        setProblemContent(text);
-      } catch (error) {
-        console.error('Failed to load problem content:', error);
-      }
-    };
-
-    // 加载代码内容
-    const loadCodeContent = async () => {
-      try {
-        const response = await fetch(`/src/lc/${codeFile}`);
-        let text = await response.text();
-        text = text
-          .split('\n')
-          .filter(line => !line.trim().startsWith('//# sourceMappingURL='))
-          .filter(line => !line.trim().startsWith('//# sourceURL='))
-          .join('\n');
-
-        const markdownCode = `\`\`\`javascript\n${text}\n\`\`\``;
-        setCodeContent(markdownCode);
-      } catch (error) {
-        console.error('Failed to load code content:', error);
-      }
-    };
-
-    if (problemFile) loadProblemContent();
-    if (codeFile) loadCodeContent();
-  }, [problemFile, codeFile]);
-
   return (
     <div className="lc-page">
       <div className="flex h-full gap-4">

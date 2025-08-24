@@ -1,5 +1,5 @@
 import React, { useState, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Layout, Menu, theme, Typography, Breadcrumb, Spin } from 'antd';
 import {
   CodeOutlined,
@@ -21,6 +21,8 @@ const { Title } = Typography;
 
 function App() {
   const [collapsed, setCollapsed] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -31,15 +33,15 @@ function App() {
   // 处理菜单点击
   const handleMenuClick = ({ key }) => {
     if (key !== 'lc') {
-      window.location.href = key;
+      navigate(key);
     }
   };
 
   // 获取当前路径
-  const currentPath = window.location.pathname;
+  const currentPath = location.pathname;
 
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen">
       <Layout className="h-full">
         <Sider
           trigger={null}
@@ -51,9 +53,9 @@ function App() {
         >
           <div className="h-14 mx-4 my-4 flex items-center border-b border-gray-200 pb-4 mb-4">
             <div className={`flex items-center ${collapsed ? 'justify-center w-full' : 'justify-start'}`}>
-              <CodeOutlined className="text-2xl text-blue-500" />
+              <CodeOutlined className="text-2xl text-blue-500 flex-shrink-0" />
               {!collapsed && (
-                <Title level={4} className="ml-3 mb-0 text-blue-500 leading-none pt-2">
+                <Title level={4} className="ml-3 mb-0 mt-2 leading-none whitespace-nowrap">
                   前端生存手册
                 </Title>
               )}
@@ -61,7 +63,7 @@ function App() {
           </div>
           <Menu
             mode="inline"
-            defaultSelectedKeys={[currentPath]}
+            selectedKeys={[currentPath]}
             defaultOpenKeys={['lc']}
             items={menuItems}
             onClick={handleMenuClick}
@@ -69,9 +71,9 @@ function App() {
           />
         </Sider>
 
-        <Layout className="h-screen overflow-hidden">
+        <Layout className="flex-1">
           <Header 
-            className="px-6 border-b border-gray-200 flex items-center justify-between flex-shrink-0"
+            className="px-6 border-b border-gray-200 flex items-center justify-between h-16 flex-shrink-0"
             style={{ background: colorBgContainer }}
           >
             <div className="flex items-center">
@@ -79,7 +81,7 @@ function App() {
                 className: 'text-lg cursor-pointer hover:text-blue-500 transition-colors',
                 onClick: () => setCollapsed(!collapsed),
               })}
-              <Title level={3} className="ml-6 mb-0 mt-3">
+              <Title level={3} className="ml-6 mb-0 mt-2">
                 {getPageTitle(currentPath)}
               </Title>
             </div>

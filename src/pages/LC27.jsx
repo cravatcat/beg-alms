@@ -7,6 +7,9 @@ import {
   ControlPanel 
 } from '../components/Animator';
 
+import removeElementMarkdown from '../lc/removeElement.md?raw';
+import removeElementCode from '../lc/removeElement.js?raw';
+
 function LC27() {
   const elementRefs = useRef({});
   
@@ -162,8 +165,8 @@ function LC27() {
 
   return (
     <LCLayout 
-      problemFile="removeElement.md"
-      codeFile="removeElement.js"
+      problemContent={removeElementMarkdown}
+      codeContent={`\`\`\`javascript\n${removeElementCode}\n\`\`\``}
       animationComponent={<AnimationComponent />}
       title="动态移除元素演示"
     />

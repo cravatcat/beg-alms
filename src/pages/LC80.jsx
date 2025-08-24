@@ -7,6 +7,9 @@ import {
   ControlPanel
 } from '../components/Animator';
 
+import removeDuplicates2Markdown from '../lc/removeDuplicates2.md?raw';
+import removeDuplicates2Code from '../lc/removeDuplicates2.js?raw';
+
 function LC80() {
   const elementRefs = useRef({});
 
@@ -151,8 +154,8 @@ function LC80() {
 
   return (
     <LCLayout
-      problemFile="removeDuplicates2.md"
-      codeFile="removeDuplicates2.js"
+      problemContent={removeDuplicates2Markdown}
+      codeContent={`\`\`\`javascript\n${removeDuplicates2Code}\n\`\`\``}
       animationComponent={<AnimationComponent />}
       title="动态删除有序数组中的重复项 II"
     />
