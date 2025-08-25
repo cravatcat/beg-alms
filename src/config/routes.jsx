@@ -1,6 +1,6 @@
-import React from 'react'; 
- 
- import {
+import React from 'react';
+
+import {
   HomeOutlined,
   InfoCircleOutlined,
   CodeOutlined
@@ -11,6 +11,7 @@ const LC88 = React.lazy(() => import('../pages/LC88'));
 const LC27 = React.lazy(() => import('../pages/LC27'));
 const LC26 = React.lazy(() => import('../pages/LC26'));
 const LC80 = React.lazy(() => import('../pages/LC80'));
+const LC169 = React.lazy(() => import('../pages/LC169'));
 const About = React.lazy(() => import('../pages/About'));
 
 // 路由配置
@@ -66,13 +67,23 @@ export const routeConfig = [
     showInMenu: true,
   },
   {
+    path: '/lc169',
+    component: LC169,
+    title: '多数元素',
+    breadcrumb: ['基本功', '多数元素'],
+    menuKey: '/lc169',
+    label: '多数元素',
+    parent: 'lc',
+    showInMenu: true,
+  },
+  {
     path: '/about',
     component: About,
     title: '关于笔记',
     breadcrumb: ['关于'],
     menuKey: '/about',
     label: '关于',
-    icon: <InfoCircleOutlined/>,
+    icon: <InfoCircleOutlined />,
     showInMenu: true,
   },
 ];

@@ -53,7 +53,7 @@ export class AlgorithmAnimator {
     }
 
     this.isProcessing = false;
-    
+
     // 如果队列为空且算法还在运行，说明算法执行完成
     if (this.animationQueue.length === 0 && this.isRunning) {
       this.setState({ isComplete: true, currentAction: '🎉 算法执行完成！' });
@@ -117,6 +117,10 @@ export class AlgorithmAnimator {
         this.setState({ [params.pointerName]: params.value });
         break;
 
+      case 'updateState':
+        this.setState(params.updates);
+        break;
+
       default:
         console.warn('未知的动画类型:', type);
     }
@@ -148,6 +152,10 @@ export class AlgorithmAnimator {
 
   updatePointer(pointerName, value) {
     this.enqueue('updatePointer', { pointerName, value });
+  }
+
+  updateState(updates) {
+    this.enqueue('updateState', { updates });
   }
 
   // 开始执行 - 现在算法函数是同步的
