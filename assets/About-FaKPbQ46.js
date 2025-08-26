@@ -1,4 +1,4 @@
-import{j as n}from"./index-BhNsE20t.js";import{M as o}from"./MarkdownRenderer-DTUgtfun.js";const a=`# 作者幻想有一天可以靠神秘力量实现富得流油 🧙‍♂️
+import{j as n}from"./index-_a2dy_eJ.js";import{M as o}from"./MarkdownRenderer-uzUyTDzS.js";const a=`# 作者幻想有一天可以靠神秘力量实现富得流油 🧙‍♂️
 
 ## 现状 📊
 

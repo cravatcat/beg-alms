@@ -1,4 +1,4 @@
-import{j as n}from"./index-BhNsE20t.js";import{M as o}from"./MarkdownRenderer-DTUgtfun.js";const a=`# 前端生存手册 🎪
+import{j as n}from"./index-_a2dy_eJ.js";import{M as o}from"./MarkdownRenderer-uzUyTDzS.js";const a=`# 前端生存手册 🎪
 
 ## 现状 📊
 

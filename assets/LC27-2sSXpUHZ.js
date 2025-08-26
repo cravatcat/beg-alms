@@ -1,4 +1,4 @@
-import{r as h,j as e}from"./index-BhNsE20t.js";import{u as g,L as p,C as v,A as f,M as j}from"./ControlPanel-CkuvBQkb.js";import"./MarkdownRenderer-DTUgtfun.js";const b=`# 移除元素
+import{r as h,j as e}from"./index-_a2dy_eJ.js";import{u as g,L as p,C as v,A as f,M as j}from"./ControlPanel-C-Z0PDht.js";import"./MarkdownRenderer-uzUyTDzS.js";const b=`# 移除元素
 
 **难度：** 简单  
 **核心技能：** 双指针 • 原地移除
