@@ -12,6 +12,7 @@ const LC27 = React.lazy(() => import('../pages/LC27'));
 const LC26 = React.lazy(() => import('../pages/LC26'));
 const LC80 = React.lazy(() => import('../pages/LC80'));
 const LC169 = React.lazy(() => import('../pages/LC169'));
+const LC189 = React.lazy(() => import('../pages/LC189'));
 const About = React.lazy(() => import('../pages/About'));
 
 // 路由配置
@@ -73,6 +74,16 @@ export const routeConfig = [
     breadcrumb: ['基本功', '多数元素'],
     menuKey: '/lc169',
     label: '多数元素',
+    parent: 'lc',
+    showInMenu: true,
+  },
+  {
+    path: '/lc189',
+    component: LC189,
+    title: '轮转数组',
+    breadcrumb: ['基本功', '轮转数组'],
+    menuKey: '/lc189',
+    label: '轮转数组',
     parent: 'lc',
     showInMenu: true,
   },

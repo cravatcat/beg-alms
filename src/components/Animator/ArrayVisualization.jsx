@@ -6,7 +6,8 @@ export function ArrayVisualization({
   comparing = [],
   highlighting = [],
   elementRefs,
-  customStyles
+  customStyles,
+  renderElement // 新增的renderElement属性
 }) {
   const getPointerColor = (pointerName) => {
     switch (pointerName) {
@@ -20,6 +21,55 @@ export function ArrayVisualization({
   };
 
   const ArrayElement = ({ value, index }) => {
+    // 如果提供了renderElement函数，使用自定义渲染
+    if (renderElement) {
+      const customElement = renderElement(value, index);
+      
+      // 为自定义元素添加指针和索引
+      return (
+        <div className="relative">
+          {customElement}
+          
+          {/* 指针标识 */}
+          {Object.entries(pointers)
+            .filter(([_, pos]) => pos === index)
+            .map(([name]) => name).length > 0 && (
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs font-bold">
+              {Object.entries(pointers)
+                .filter(([_, pos]) => pos === index)
+                .map(([name]) => name).length === 1 ? (
+                // 单个指针的情况
+                <span className={getPointerColor(Object.entries(pointers)
+                  .filter(([_, pos]) => pos === index)
+                  .map(([name]) => name)[0])}>
+                  ↓ {Object.entries(pointers)
+                    .filter(([_, pos]) => pos === index)
+                    .map(([name]) => name)[0]}
+                </span>
+              ) : (
+                // 多个指针重叠的情况 - 水平排列
+                <div className="flex flex-row items-center space-x-1">
+                  {Object.entries(pointers)
+                    .filter(([_, pos]) => pos === index)
+                    .map(([name]) => name).map((pointerName, idx) => (
+                    <span key={idx} className={getPointerColor(pointerName)}>
+                      ↓ {pointerName}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* 索引 */}
+          <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-gray-500">
+            {index}
+          </div>
+        </div>
+      );
+    }
+
+    // 默认渲染逻辑（保持原有功能）
     const isComparing = comparing.includes(`${arrayName}-${index}`);
     const isHighlighting = highlighting.includes(`${arrayName}-${index}`);
     const pointerTypes = Object.entries(pointers)
